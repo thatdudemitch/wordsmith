@@ -5,10 +5,10 @@ const favoritesController = {};
 favoritesController.show = (req, res) => {
   Song.findById(req.params.id)
     .then(song => {
-      res.render('songs/user-song-single', {
+      res.render('user/user-song-single', {
         currentPage: 'show',
         message: 'ok',
-        data: song,
+        song: song,
       });
     }).catch(err => {
       console.log(err);
@@ -46,9 +46,9 @@ favoritesController.update = (req, res) => {
 favoritesController.edit = (req, res) => {
   Song.findById(req.params.id)
     .then(song => {
-      res.render('song/user-song-edit', {
+      res.render('user/user-song-edit', {
         currentPage: 'edit',
-        data: song,
+        song: song,
       });
     }).catch(err => {
       console.log(err);
