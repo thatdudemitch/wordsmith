@@ -20,7 +20,10 @@ function getResults(req, res, next) {
 }
 
 async function getLyrics(id) {
-  const song = await lyricist.song(id, { fetchLyrics: true });
+  const song = await lyricist.song(id, { 
+    fetchLyrics: true,
+    textFormat: 'html',
+  });
   return song.lyrics;
 }
 
