@@ -8,6 +8,6 @@ block content
     each song in songs.hits
       form(action="songs/" + song.result.id + "/")  
         input(type="hidden" name="id" value= song.result.id)
-        input(type="image" src= song.result.header_image_thumbnail_url)
+        input(type="submit" value='' style="background-image: url(" + song.result.header_image_thumbnail_url + ")").submit-image
         label.song-title= song.result.title_with_featured
         label.song-artist= song.result.primary_artist.name
