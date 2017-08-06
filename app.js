@@ -29,21 +29,22 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'pug');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
+    console.log(`Hey, Mitch! Currently listening on port ${port}`);
 });
 
 const indexRoute = require('./routes/index-route');
 app.use('/', indexRoute);
-const songRoutes = require('./routes/user-routes');
-app.use('/songs', songRoutes);
+const songsRoutes = require('./routes/songs-routes');
+app.use('/songs', songsRoutes);
 const authRoutes = require('./routes/auth-routes');
 app.use('/auth', authRoutes);
-const userRoutes = require('./routes/user-routes');
-app.use('/user', userRoutes);
+const usersRoutes = require('./routes/users-routes');
+app.use('/user', usersRoutes);
+
 
 app.get('*', (req, res) => {
     res.status(404).send('not found!');
