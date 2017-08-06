@@ -1,10 +1,8 @@
-<% include ../partials/boilerplate %>
+extends ../partials/layout
 
-<form method='POST' action='/movies/<%= data.id %>?_method=PUT'>
-  <input name='title' type='text' value='<%= data.title %>' />
-  <input name='year' type='number' value='<%= data.year %>' />
-  <input name='genre' type='text' value='<%= data.genre %>' />
-  <input type='submit' value='Edit it!' />
-</form>
- 
-<% include ../partials/end %>
+block content
+
+  form(method='POST' action='/user/' + song.id + '?_method=PUT')
+    input(name='title' type='text' value= song.title)
+    input(name='artist' type='text' value= song.artist)
+    input(type='submit' value='Update')
