@@ -1,5 +1,21 @@
 extends ../partials/layout
 
 block content
-  div.auth-container
+  div.user-container
     h1 Welcome #{user.username}
+
+  div.user-songs
+    h2 Your songs
+
+    each song in songs
+      div.songs
+        img(src= song.album_image)
+        h3= song.title
+        h3= song.artist
+
+  //-       <div class='links'>
+  //-         <a class='linkto' href='/movies/<%= movie.id%>'>Learn more</a>
+  //-         <form method='POST' action='/movies/<%= movie.id %>?_method=DELETE'>
+  //-           <input type='submit' value='Delete it!' />
+  //-         </form>
+  //-       </div>

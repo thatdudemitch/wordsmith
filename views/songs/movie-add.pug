@@ -1,0 +1,9 @@
+extends ../partials/layout 
+
+block content
+
+  form(method='POST' action="/user")
+    input(name='title' type='text' placeholder='title')
+    input(name='year' type='number' placeholder='year')
+    input(name='genre' type='text' placeholder='genre')
+    input(type='submit' value='Submit!')

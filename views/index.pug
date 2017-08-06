@@ -4,3 +4,7 @@ block content
   div.container
     h1= message
     h3= subTitle
+
+    form(action="/songs")
+      input(type="text", name="search", placeholder="Search tracks").search
+      input(type="submit", value="search")

@@ -1,0 +1,16 @@
+extends ../partials/layout 
+
+block content
+
+  image(src= single.song.header_image_thumbnail_url)
+  image(src= single.song.primary_artist.header_image_url)
+  h2.song-title= single.song.title_with_featured
+  h3.song-artist= single.song.primary_artist.name
+  p= lyrics
+
+  form(method="POST" action="/user")
+    input(type="number" name="genius" value= single.song.id)
+    input(type="text" name="title" value= single.song.title_with_featured)
+    input(type="text" name="artist" value= single.song.primary_artist.name)
+    input(type="text" name="album" value= single.song.header_image_thumbnail_url)
+    input(type="submit" value="Favorite")
