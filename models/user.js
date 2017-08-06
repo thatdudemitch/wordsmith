@@ -12,10 +12,17 @@ User.findByUserName = userName => {
 User.create = user => {
   return db.one(`
     INSERT INTO users
-    (username, email, password_digest, firstname, lastname)
-    VALUES ($1, $2, $3, $4, $5)
+    (username, email, password_digest)
+    VALUES ($1, $2, $3)
     RETURNING *
-  `, [user.username, user.email, user.password_digest, user.firstname, user.lastname]);
+  `, [user.username, user.email, user.password_digest]);
+};
+
+User.findUserSongs = id => {
+  return db.manyOrNone(`
+    SELECT * FROM songs
+    WHERE user_id = $1
+  `, [id]);
 };
 
 module.exports = User;
