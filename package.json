@@ -10,6 +10,9 @@
     "debugger": "DEBUG=*:* npm run dev"
   },
   "author": "",
+  "engines": {
+    "node": ">= 7.6.0"
+  },
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
