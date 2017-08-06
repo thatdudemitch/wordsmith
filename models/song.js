@@ -20,7 +20,7 @@ Song.create = (song, userid) => {
 
 Song.update = (song, id) => {
   return db.one(`
-    UPDATE song SET
+    UPDATE songs SET
     title = $1,
     artist = $2
     WHERE id = $3
