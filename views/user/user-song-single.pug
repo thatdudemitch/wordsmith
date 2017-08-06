@@ -1,24 +1,21 @@
-<% include ../partials/boilerplate %>
+extends ../partials/layout
 
-<div class='hero'>
-</div>
+block content
+  div.user-song-container
+    h1 placeholder
+
+    div.featured
+      img(src= song.album_image)
+      h2= song.title 
+      h2= song.artist 
+
+      div.options
+        a(href='/user/' + song.id + '/edit') Edit it!
+        form(method='POST' action='/user/' + song.id + '?_method=DELETE')
+          input(type='submit' value='Delete it!')
 
 
-  <div class='movie-container'>
-    <div class='movie'>
-      <h2><%= data.title %></h2>
-      <h3><%= data.genre %></h3>
-      <h3><%= data.year %></h3>
-      <div class='links'>
-        <a href='/movies/<%= data.id %>/edit'>Edit it!</a>
-        <form method='POST' action='/movies/<%= data.id %>?_method=DELETE'>
-          <input type='submit' value='Delete it!' />
-        </form>
-      </div>
-      </div>
-      <div class='linkback'>
-        <a class='seeall' href='/movies/'>See all movies</a>
-      </div>
-    </div>
+      div.linkback
+        a(href='/user/') Back to profile
+   
     
-<% include ../partials/end %>
