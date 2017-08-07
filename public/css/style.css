@@ -322,3 +322,86 @@ nav a {
 .auth-container p, .auth-container a {
   font-size: 1em;;
 } 
+
+/****** 
+  /user - user index styles
+******/
+
+#user-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 85vh;
+  flex-wrap: wrap;
+}
+
+#user-container h2 {
+  width: 100%;
+  margin-right: 50px;
+  text-align: right;
+}
+
+#user-container h1 {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+/****** 
+  /user/:id - user id styles
+******/
+
+#user-song-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 85vh;
+}
+
+.featured {
+  border-radius: 10px;
+  box-shadow: 2px 2px 13px #ddd;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.featured img {
+  border-radius: 10px 10px 0px 0px;
+  margin-bottom: 20px;
+}
+
+.options {
+  display: flex;
+  margin-top: 30px;
+}
+
+.options form {
+  width: 100%;
+  height: 10%;
+}
+
+.options button {
+  display: flex;
+  justify-content: center;
+  flex: 2; 
+  border: none;
+  outline: none;
+  margin-right: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.delete {
+  background-color: red;
+}
+
+.edit {
+  background-color: #4CD4B0;
+}
