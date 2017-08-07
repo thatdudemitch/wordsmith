@@ -15,7 +15,7 @@ block content
           p= lyrics
         form(method='POST' action='/user')
           input(type='number' name='genius' value= single.song.id).hidden
-          input(type='text' name='title' value= single.song.title_with_featured).hidden
+          input(type='text' name='title' value= single.song.title).hidden
           input(type='text' name='artist' value= single.song.primary_artist.name).hidden
           input(type='text' name='album' value= single.song.header_image_thumbnail_url).hidden
           button(type='submit').fav-btn Favorite
