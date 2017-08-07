@@ -8,13 +8,6 @@ block content
       each song in songs
         div.songs
         form(action='user/' + song.id + '/')  
-          input(type="submit" value='' style="background-image: url(" + song.album_image + ")").submit-image
+          input(type='submit' value='' style='background-image: url(' + song.album_image + ')').submit-image
           h3.song-title= song.title
           h3.song-artist= song.artist
-
-  //-       <div class='links'>
-  //-         <a class='linkto' href='/movies/<%= movie.id%>'>Learn more</a>
-  //-         <form method='POST' action='/movies/<%= movie.id %>?_method=DELETE'>
-  //-           <input type='submit' value='Delete it!' />
-  //-         </form>
-  //-       </div>
