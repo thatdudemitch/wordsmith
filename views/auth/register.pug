@@ -3,8 +3,9 @@ extends ../partials/layout
 block content
   div.auth-container
     h1 Register
-    form(method="POST", action="/auth/register")
-      input(type="text", name="username", placeholder="Enter username" required)
-      input(type="email", name="email", placeholder="Enter email" required)
-      input(type="password", name="password", placeholder="Enter password" required)
-      input(type="submit", value="Register!")
+    h2 User information
+    form(method='POST' action='/auth/register')
+      input(type='text' name='username', placeholder='Choose username' required).credentials
+      input(type='email' name='email', placeholder='Enter email' required).credentials
+      input(type='password' name='password', placeholder='Choose password' required).credentials
+      button(type='submit').button.input-button Register
