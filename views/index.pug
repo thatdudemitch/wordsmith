@@ -1,10 +1,8 @@
 extends ./partials/layout
 
 block content
-  div.container
-    h1= message
-    h3= subTitle
+  div#container
 
-    form(action="/songs")
-      input(type="text", name="search", placeholder="Search tracks").search
-      input(type="submit", value="search")
+    form(action='/songs')
+      input(type='text' name='search' placeholder='Find Lyrics').search
+      button(type='submit').search-btn &raquo;	
