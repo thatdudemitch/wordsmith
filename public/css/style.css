@@ -1,13 +1,52 @@
-@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:300,400');
 
 body {
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   line-height: 1.8em;
 }
 
+a {
+  text-decoration: none;
+}
+
+/****** 
+  nav - navigation style 
+******/
+
+header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  height: 10vh;
+  margin-top: 30px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+nav a {
+  margin: 25px;
+  color: #777;
+}
+
+#logo {
+  font-weight: lighter;
+  font-size: 2.5em;
+  letter-spacing: 5px;
+  color: #1A1A1A;
+}
+
+/****** 
+  / - main index style 
+******/
+
 #container {
   width: 100%;
-  height: 90vh;
+  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,7 +61,7 @@ body {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 90vh;
+  height: 70vh;
   flex-wrap: wrap;
 }
 
@@ -60,12 +99,12 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 90vh;
+  height: 80vh;
 }
 
 .song-single {
   width: 80%;
-  height: 80vh;
+  height: 70vh;
   border-radius: 10px;
   display: flex;
   box-shadow: 2px 2px 8px #999;
@@ -105,6 +144,7 @@ body {
   width: 80%;
   text-align: center;
   flex-direction: column;
+  margin-top: 5px;
 }
 
 .info h2 {
@@ -124,15 +164,16 @@ body {
 
  .lyrics p { 
   overflow-y: scroll;
-  padding: 20px; 
+  padding: 25px; 
   color: #777;
   font-size: 1.1em;
   font-weight: 300;
+  font-family: 'Alegreya Sans', sans-serif;
 } 
 
 ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; 
+  width: 0px;
+  background: transparent; 
 }
 
 .info form {
