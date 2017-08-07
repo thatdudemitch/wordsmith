@@ -6,13 +6,13 @@ const usersController = require('../controllers/users-controller');
 
 authRouter.get('/login', authHelpers.loginRedirect, (req, res) => {
   res.render('auth/login', {
-    currentPage: 'login', // this is specific to the movies app bc of the CSS setup
+    currentPage: 'login',
   });
 });
 
 authRouter.get('/register', authHelpers.loginRedirect, (req, res) => {
   res.render('auth/register', {
-    currentPage: 'register', // see above
+    currentPage: 'register',
   });
 });
 
