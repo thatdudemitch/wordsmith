@@ -3,9 +3,9 @@
 [Wordsmith Heroku](https://evening-coast-89238.herokuapp.com)
 
 ## Wireframes and Mockup
-![Image](https://github.com/thatdudemitch/wordsmith/blob/master/README_images/wireframe1.png)
+![Image](https://github.com/thatdudemitch/wordsmith/blob/master/README_images/wireframe1.jpg)
 
-![Image](https://github.com/thatdudemitch/wordsmith/blob/master/README_images/wireframe2.png)
+![Image](https://github.com/thatdudemitch/wordsmith/blob/master/README_images/wireframe2.jpg)
 
 ![Image](https://github.com/thatdudemitch/wordsmith/blob/master/README_images/song-results-page.png)
 
