@@ -3,10 +3,11 @@
 [Wordsmith Heroku](https://evening-coast-89238.herokuapp.com)
 
 ## Wireframes and Mockup
+#### Song page
 ![Image](https://github.com/thatdudemitch/wordsmith/blob/master/README_images/wireframe1.JPG)
-
+#### Results page
 ![Image](https://github.com/thatdudemitch/wordsmith/blob/master/README_images/wireframe2.JPG)
-
+#### Results page mockup
 ![Image](https://github.com/thatdudemitch/wordsmith/blob/master/README_images/song-results-page.png)
 
 ## What is Wordsmith?
