@@ -173,7 +173,7 @@ nav a {
   height: 300px;
   width: 300px;
   display: flex;
-  box-shadow: 2px 2px 13px #444;
+  box-shadow: 2px 2px 15px #222;
 }
 
 .info {
@@ -250,6 +250,9 @@ nav a {
   display: none;
 }
 
+/****** 
+  /auth - login and register style 
+******/
 .auth-container {
   height: 80vh;
   width: 100%;
@@ -262,7 +265,16 @@ nav a {
 
 .auth-container h1 {
   font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.auth-container h2 {
   margin-bottom: 50px;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
 }
 
 .button {
@@ -298,7 +310,7 @@ nav a {
   border-bottom: 1px solid black;
   font-size: 1.2em;
   padding: 10px;
-  margin: 50px;
+  margin: 10px 50px;
   text-align: center;
   background-color: transparent; 
 }
@@ -307,6 +319,6 @@ nav a {
   opacity: 1;
 }
 
- .auth-container p, .auth-container a {
+.auth-container p, .auth-container a {
   font-size: 1em;;
 } 
