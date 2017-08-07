@@ -2,15 +2,31 @@ extends ../partials/layout
 
 block content
 
-  image(src= single.song.header_image_thumbnail_url)
-  image(src= single.song.primary_artist.header_image_url)
-  h2.song-title= single.song.title_with_featured
-  h3.song-artist= single.song.primary_artist.name
-  p= lyrics
+  div#single-container
 
-  form(method="POST" action="/user")
-    input(type="number" name="genius" value= single.song.id).hidden
-    input(type="text" name="title" value= single.song.title_with_featured).hidden
-    input(type="text" name="artist" value= single.song.primary_artist.name).hidden
-    input(type="text" name="album" value= single.song.header_image_thumbnail_url).hidden
-    input(type="submit" value="Favorite")
+    div.song-single
+      div.single-album(style='background-image: url(' + single.song.header_image_thumbnail_url + ')')
+        img(src= single.song.header_image_thumbnail_url)
+      
+      div.info
+        h2= single.song.title
+        h3= single.song.primary_artist.name
+        div.lyrics
+          p= lyrics
+        form(method="POST" action="/user")
+          input(type="number" name="genius" value= single.song.id).hidden
+          input(type="text" name="title" value= single.song.title_with_featured).hidden
+          input(type="text" name="artist" value= single.song.primary_artist.name).hidden
+          input(type="text" name="album" value= single.song.header_image_thumbnail_url).hidden
+          button(type="submit").fav-btn Favorite
+
+  //-  <div id="parent">
+  //-   <div class="secondary">
+  //-     <div class='child1'></div>
+  //-   </div>
+  //-   <div class="big-secondary">
+  //-     <div class='child2'></div>
+  //-     <div class='child3'></div>
+  //-     <div class='child4'></div>
+  //-   </div>
+  //- <div>
