@@ -1,8 +1,8 @@
 {
-  "name": "crud-lyrics-app",
-  "version": "1.0.0",
+  "name": "wordsmith",
+  "version": "2.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
@@ -10,28 +10,17 @@
     "debugger": "DEBUG=*:* npm run dev"
   },
   "author": "",
-  "engines": {
-    "node": ">= 7.6.0"
-  },
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.0",
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.17.2",
-    "cheerio": "^1.0.0-rc.2",
-    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^4.0.0",
-    "ejs": "^2.5.6",
     "express": "^4.15.3",
-    "express-session": "^1.15.4",
-    "isomorphic-fetch": "^2.2.1",
     "lyricist": "^2.2.0",
-    "method-override": "^2.3.9",
     "morgan": "^1.8.2",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "pg-promise": "^6.3.5",
-    "pug": "^2.0.0-rc.3",
-    "request": "^2.81.0",
-    "serve-favicon": "~2.4.2"
+    "pg-promise": "^6.3.5"
   }
 }
