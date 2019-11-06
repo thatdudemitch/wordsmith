@@ -10,8 +10,10 @@ const StyledResults = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    .song {
-        
+    .results {
+        min-height: 100vh;
+        width: 100%;
+        text-align: center;
     }
     .song-thumbnail {
         width: 300px;
@@ -43,14 +45,34 @@ class SongResults extends React.Component {
             ))
             .catch(err => console.error('Failed', err));
     }
+
+    shouldComponentUpdate(nextProps) {
+        return this.props.location.state.search !== nextProps.location.state.search 
+        || this.props.location.state.search;
+    }
+
+    UNSAFE_componentWillUpdate(nextProps) {
+        const searchQuery = nextProps.location.state;
+        axios.post('/songs', searchQuery)
+            .then(data => this.setState(() => {
+                const searchResults = data.data.response.hits;
+                    return {
+                        results: searchResults.map(result => {
+                            return result;
+                        })
+                    }
+                }
+            ))
+            .catch(err => console.error('Failed', err));
+    }
+
     render() {
         return (
             <StyledResults>
-                <Search />
+                <Search {...this.props}/>
                 <div className="results">
                     {
                         this.state.results.map((song, idx) => {
-                            console.log(this.state.results);
                             return (
                                     <Link key={idx} to={`/songs/${song.result.id}`}>
                                         <Song 

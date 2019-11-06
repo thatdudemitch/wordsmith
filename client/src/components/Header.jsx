@@ -18,7 +18,6 @@ const StyledNav = styled.nav`
         text-decoration: none;
     }
     .nav {
-        display: none;
         list-style-type: none;
         display: block;
         position: absolute;
@@ -27,6 +26,7 @@ const StyledNav = styled.nav`
         max-height: 0;
         top: 80px;
         left: 0;
+        z-index: 2;
         transition: opacity 10ms ease-out, max-height 1000ms ease-out;
         &.show {
             opacity: 1;

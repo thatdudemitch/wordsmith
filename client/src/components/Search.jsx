@@ -49,11 +49,14 @@ class Search extends React.Component {
         const searchQuery = {
             search: this.state.search
         }
-        console.log(searchQuery, this.props)
-        this.props.history.push({
-            pathname: '/songs',
-            state: searchQuery
-        });
+        if(this.props.location.pathname !== "/songs") {
+            return this.props.history.push({
+                pathname: '/songs',
+                state: searchQuery
+            });
+        }
+        this.props.history.push({ state: searchQuery });
+        // this.setState(() => ({ search: ''}));
     }
     handleOnChange(e) {
         const name = e.target.name;

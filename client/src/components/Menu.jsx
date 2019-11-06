@@ -76,9 +76,9 @@ const StyledMenu = styled.div`
 
 const Menu = (props) => (
     <StyledMenu>
-        <div class="menu" onClick={props.toggleMenu}>
-            <div id="menu-button" class={`hamburger ${props.isOpen ? 'open' : 'close'}`}>
-                <div class="hamburger-inner"></div>
+        <div className="menu" onClick={props.toggleMenu}>
+            <div id="menu-button" className={`hamburger ${props.isOpen ? 'open' : 'close'}`}>
+                <div className="hamburger-inner"></div>
             </div>  
         </div>
     </StyledMenu>
