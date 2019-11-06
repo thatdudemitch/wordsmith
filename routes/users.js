@@ -1,15 +1,14 @@
-const express = require('express');
-const userRouter = express.Router();
-const usersController = require('../controllers/users-controller');
-const favoritesController = require('../controllers/favorites-controller');
-const authHelpers = require('../services/auth/auth-helpers');
+const router = require('express').Router();
+const usersController = require('../controllers/users');
+const favoritesController = require('../controllers/favorites');
+const auth = require('../middlewares/auth');
 
-userRouter.get('/', authHelpers.loginRequired, usersController.index);
-userRouter.post('/', authHelpers.loginRequired, favoritesController.create);
+router.get('/', auth.loginRequired, usersController.index);
+router.post('/', auth.loginRequired, favoritesController.create);
 
-userRouter.get('/:id', favoritesController.show);
-userRouter.get('/:id/edit', authHelpers.loginRequired, favoritesController.edit);
-userRouter.put('/:id', authHelpers.loginRequired, favoritesController.update);
-userRouter.delete('/:id', authHelpers.loginRequired, favoritesController.delete);
+router.get('/:id', favoritesController.show);
+router.get('/:id/edit', auth.loginRequired, favoritesController.edit);
+router.post('/:id', auth.loginRequired, favoritesController.update);
+router.delete('/:id', auth.loginRequired, favoritesController.delete);
 
-module.exports = userRouter;
+module.exports = router;

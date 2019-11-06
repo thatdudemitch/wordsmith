@@ -1,9 +1,9 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-
+const bcrypt = require('bcryptjs');
 const init = require('./passport');
-const User = require('../../models/user');
-const authHelpers = require('./auth-helpers');
+const User = require('../models/user');
+const auth = require('./auth');
 
 const options = {};
 
@@ -16,7 +16,7 @@ passport.use(
         if (!user) {
           return done(null, false);
         }
-        if (!authHelpers.comparePass(password, user.password_digest)) {
+        if (!auth.comparePass(password, user.password_digest)) {
           return done(null, false);
         } else {
           return done(null, user);

@@ -1,33 +1,17 @@
-const express = require('express');
-const authRouter = express.Router();
-const passport = require('../services/auth/local');
-const authHelpers = require('../services/auth/auth-helpers');
-const usersController = require('../controllers/users-controller');
+const router = require('express').Router();
+const passport = require('../middlewares/local');
+const usersController = require('../controllers/users');
+// const authHelpers = require('../middlewares/auth');
 
-authRouter.get('/login', authHelpers.loginRedirect, (req, res) => {
-  res.render('auth/login', {
-    currentPage: 'login',
-  });
+router.post('/register', usersController.create);
+router.post('/login', passport.authenticate('local'), (req, res) => {
+  res.json({ 
+    redirectURI: "/profile", 
+    flashMessage: "You are now logged in." });
 });
-
-authRouter.get('/register', authHelpers.loginRedirect, (req, res) => {
-  res.render('auth/register', {
-    currentPage: 'register',
-  });
-});
-
-authRouter.post('/register', usersController.create);
-
-authRouter.post('/login', passport.authenticate('local', {
-    successRedirect: '/user', 
-    failureRedirect: '/auth/login',
-    failureFlash: true,
-  })
-);
-
-authRouter.get('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('/');
+  res.json({redirectURI: '/'});
 });
 
-module.exports = authRouter;
+module.exports = router;

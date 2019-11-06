@@ -1,9 +1,25 @@
 import React from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import Search from './Search';
 import Song from './Song';
 
+const StyledResults = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .song {
+        
+    }
+    .song-thumbnail {
+        width: 300px;
+    }
+    .song-title {
+        display: block;
+    }
+`;
 class SongResults extends React.Component {
     constructor(props) {
         super(props);
@@ -29,21 +45,24 @@ class SongResults extends React.Component {
     }
     render() {
         return (
-            <div>
-               {
-                   this.state.results.map((song, idx) => {
-                       console.log(this.state.results);
-                       return (
-                            <Link key={idx} to={`/songs/${song.result.id}`}>
-                                <Song 
-                                    thumbnail={song.result.song_art_image_url} 
-                                    title={song.result.title}
-                                    artist={song.result.primary_artist.name} />
-                            </Link>
-                       );
-                   })
-               }
-            </div>
+            <StyledResults>
+                <Search />
+                <div className="results">
+                    {
+                        this.state.results.map((song, idx) => {
+                            console.log(this.state.results);
+                            return (
+                                    <Link key={idx} to={`/songs/${song.result.id}`}>
+                                        <Song 
+                                            thumbnail={song.result.song_art_image_url} 
+                                            title={song.result.title}
+                                            artist={song.result.primary_artist.name} />
+                                    </Link>
+                            );
+                        })
+                    }
+                </div>
+            </StyledResults>
         );
     }
 }
