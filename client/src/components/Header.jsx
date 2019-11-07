@@ -62,14 +62,14 @@ const StyledLink = styled(Link)`
     text-decoration: none;
     display: inline-block;
     padding: 11px 11px 11px 0;
+    text-transform: uppercase;
     ${props => 
         props.cta && css`
             background: #949eff;
-            color: #3A49E0;
+            color: #FFF;
             box-shadow: 0 3px 15px rgba(200, 200, 200, 0.5);
             border-radius: 4px;
             padding: 10px;
-            font-weight: 700;
         `}
 `;
 
@@ -104,7 +104,7 @@ class Header extends React.Component {
                         </ul>
                     )
                     : (
-                        <ul>
+                        <ul className={`nav ${this.state.isOpen ? 'show' : ''}`}>
                             <li className="nav-item">
                                 <StyledLink to="/profile">Profile</StyledLink>
                             </li>
