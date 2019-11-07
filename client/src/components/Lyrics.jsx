@@ -1,5 +1,15 @@
 import React from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const StyledLyrics = styled.div`
+    width: 100%;
+    padding-bottom: 22px;
+    .bar {
+        font-size: 1.6rem;
+        line-height: 1.2;
+    }
+`;
 
 class Lyrics extends React.Component {
     constructor(props) {
@@ -20,13 +30,13 @@ class Lyrics extends React.Component {
 
     render() {
         return (
-            <div>
+            <StyledLyrics>
                 {
                     this.state.result && this.state.result.split(/\r?\n/).map((verse, idx) => {
-                        return (verse !== "") ? <p key={idx}>{verse}</p> : <br />;
+                        return (verse !== "") ? <p className="bar" key={idx}>{verse}</p> : <br />;
                     })
                 }
-            </div>
+            </StyledLyrics>
         )
     }
 

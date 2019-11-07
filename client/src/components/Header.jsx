@@ -27,6 +27,7 @@ const StyledNav = styled.nav`
         top: 80px;
         left: 0;
         z-index: 2;
+        pointer-events: none;
         transition: opacity 10ms ease-out, max-height 1000ms ease-out;
         &.show {
             opacity: 1;
@@ -34,6 +35,7 @@ const StyledNav = styled.nav`
             padding: 22px;
             max-height: 150px;
             background: #fff;
+            pointer-events: all;
             transition: opacity 300ms ease-in, height 100ms ease-in;
         }
     }

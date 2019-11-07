@@ -11,11 +11,12 @@ const StyledSearch = styled.form`
         outline: none;
         width: 100%;
         font-size: 1.75rem;
-        box-shadow: 0 3px 15px rgba(103, 103, 103, 0.35);
+        /* box-shadow: 0 3px 15px rgba(103, 103, 103, 0.35); */
         padding: 18px;
         height: 50px;
+        background: #f9f9f9;
         &::placeholder {
-            color: #ccc;
+            color: #aaa;
         }
     }
     button {
@@ -56,7 +57,7 @@ class Search extends React.Component {
             });
         }
         this.props.history.push({ state: searchQuery });
-        // this.setState(() => ({ search: ''}));
+        this.setState(() => ({ search: ''}));
     }
     handleOnChange(e) {
         const name = e.target.name;

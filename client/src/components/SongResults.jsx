@@ -11,15 +11,28 @@ const StyledResults = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     .results {
+        display: flex;
+        flex-wrap: wrap;
         min-height: 100vh;
         width: 100%;
+    }
+    .song {
+        width: 100%;
+        text-decoration: none;
+        margin-bottom: 22px;
         text-align: center;
     }
-    .song-thumbnail {
-        width: 300px;
+
+    @media(min-width:768px) {
+        .song {
+            width: 50%;
+        }   
     }
-    .song-title {
-        display: block;
+
+    @media(min-width:1025px) {
+        .song {
+            width: 33%;
+        }   
     }
 `;
 class SongResults extends React.Component {
@@ -74,7 +87,7 @@ class SongResults extends React.Component {
                     {
                         this.state.results.map((song, idx) => {
                             return (
-                                    <Link key={idx} to={`/songs/${song.result.id}`}>
+                                    <Link className="song" key={idx} to={`/songs/${song.result.id}`}>
                                         <Song 
                                             thumbnail={song.result.song_art_image_url} 
                                             title={song.result.title}
