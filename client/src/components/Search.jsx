@@ -41,31 +41,16 @@ class Search extends React.Component {
         super(props);
 
         this.state = { search: '' }
-        this.handleOnSubmit = this.handleOnSubmit.bind(this);
         this.handleOnChange = this.handleOnChange.bind(this);
-    }
-    handleOnSubmit(e) {
-        e.preventDefault();
-        const searchQuery = {
-            search: this.state.search
-        }
-        if(this.props.location.pathname !== "/songs") {
-            return this.props.history.push({
-                pathname: '/songs',
-                state: searchQuery
-            });
-        }
-        this.props.history.push({ state: searchQuery });
-        this.setState(() => ({ search: ''}));
     }
     handleOnChange(e) {
         const name = e.target.name;
         const value = e.target.value;
         this.setState(() => ({ [name]: value }));
-      }
+    }
     render() {
         return (
-            <StyledSearch onSubmit={this.handleOnSubmit}>
+            <StyledSearch onSubmit={(e) => this.props.handleSearchSubmit(e, this.state.search, this.props)}>
                 <input type="text" name="search" value={this.state.search} placeholder="Search for song" onChange={this.handleOnChange}/>
                 <button>Search</button>
             </StyledSearch>

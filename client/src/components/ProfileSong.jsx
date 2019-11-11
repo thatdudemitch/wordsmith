@@ -4,6 +4,34 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Song from './Song';
 
+const StyledSong = styled.div`
+    .song {
+        text-decoration: none;
+    }
+    button {
+        text-transform: uppercase;
+        outline: 0;
+        background: #f55959;
+        color: #FFF;
+        box-shadow: 0 3px 15px rgba(200, 200, 200, 0.5);
+        width: 100%;
+        border: 0;
+        border-radius: 4px;
+        padding: 15px;
+        margin-top: 15px;
+        color: #FFFFFF;
+        font-size: 14px;
+        -webkit-transition: all 0.3 ease;
+        transition: all 0.3 ease;
+        cursor: pointer;
+        
+        &:hover, 
+        &:active, 
+        &:focus {
+            background: #f53e3e;
+        }
+    }
+`;
 
 class ProfileSong extends React.Component {
     constructor(props) {
@@ -39,7 +67,7 @@ class ProfileSong extends React.Component {
         const song = this.state.song;
         return (
             song && 
-                <div>
+                <StyledSong>
                     <Link className="song" to={`/songs/${song.genius_id}`}>
                         <Song 
                             thumbnail={song.album_image} 
@@ -47,7 +75,7 @@ class ProfileSong extends React.Component {
                             artist={song.artist} />
                     </Link>
                     <button onClick={this.deleteFavorite}>Remove Favorite</button>
-                </div>
+                </StyledSong>
         
         )
     }

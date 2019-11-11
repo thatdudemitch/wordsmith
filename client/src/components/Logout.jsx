@@ -68,10 +68,10 @@ const Logout = (props) => (
         <p className="message">Are you sure you want to log out?</p>
         <div className="ctas">
             <StyledButton onClick={() => {
-                props.handleLogout(false)
+                props.handleLogout(false, props)
             }}>Cancel</StyledButton>
             <StyledButton warn onClick={() =>{
-                props.handleLogout(true)
+                props.handleLogout(true, props)
             }}>Log Out</StyledButton>
         </div>
     </StyledLogout>

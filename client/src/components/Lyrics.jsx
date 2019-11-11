@@ -78,7 +78,7 @@ const StyledLyrics = styled.div`
             height: 525px;
             order: 1;
             > div {
-                overflow: scroll;
+                overflow-y: scroll;
             }
         }
     }
@@ -108,12 +108,16 @@ class Lyrics extends React.Component {
         }
 
         axios.post('/profile', favorite)
-        .then(() => {
-            if(this.state.user) {
+        .then(user => {
+            if(user) {
                 this.props.history.push({
                     pathname: "/profile"
                 });
-            } 
+            } else {
+                this.props.history.push({
+                    pathname: "/login"
+                });
+            }
         })
         .catch(err => console.error('ERROR: ', err ));
     }

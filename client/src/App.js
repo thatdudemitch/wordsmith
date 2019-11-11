@@ -18,9 +18,11 @@ class App extends React.Component {
         this.state = {
             loggedIn: false,
             user: null,
-            songs: []
+            songs: [],
+            searchQuery: ''
         }
         this.handleLogout = this.handleLogout.bind(this);
+        this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
         this.setUser = this.setUser.bind(this);
     }
 
@@ -49,7 +51,18 @@ class App extends React.Component {
         } 
     }
 
-    handleLogout(choice) {
+    handleSearchSubmit(e, search, props) {
+        e.preventDefault();
+        this.setState(() => ({
+            searchQuery: search
+        }))
+        props.history.push({
+            pathname: `/songs/${search}`,
+            state: { search }
+        });
+    }
+
+    handleLogout(choice, props) {
         if(choice) {
             axios.get('/logout')
                 .then(res => {
@@ -58,24 +71,33 @@ class App extends React.Component {
                         user: null,
                         songs: []
                     }));
-                    return this.props.history.push({
+                    return props.history.push({
                         pathname: res.data.redirectURI
                     }); 
                 })
                 .catch(err => console.log(err));
         } 
-        this.props.history.goBack();
+        props.history.goBack();
     }
     
 
     render() {
+        console.log(this.state.searchQuery)
         return (
             <Router className="App">
                 <Header loggedIn={this.state.loggedIn}/>
-                <Route path="/" exact component={Home}/>
-                <Route path="/songs" exact component={SongResults}/>
                 <Route 
-                    path="/songs/:id" 
+                    path="/"  
+                    exact 
+                    render={(props) => <Home {...props} handleSearchSubmit={this.handleSearchSubmit} />}
+                />
+                <Route 
+                    path="/songs/:id"  
+                    exact 
+                    render={(props) => <SongResults {...props} searchQuery={this.state.searchQuery} handleSearchSubmit={this.handleSearchSubmit} />}
+                />
+                <Route 
+                    path="/song/:id" 
                     exact 
                     render={(props) => <Lyrics {...props} user={this.state.user} songs={this.state.songs} />}
                 />

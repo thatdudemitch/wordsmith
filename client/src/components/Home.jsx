@@ -13,7 +13,7 @@ const StyledHome = styled.div`
 `;
 const Home = (props) => (
     <StyledHome>
-        <Search {...props}/>
+        <Search {...props} handleSearchSubmit={props.handleSearchSubmit} />
     </StyledHome>
 );
 

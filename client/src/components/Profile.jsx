@@ -14,9 +14,6 @@ const StyledProfile = styled.div`
     }
 `;
 class Profile extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     componentDidMount() {
         axios.get('/profile')
             .then(res => {
@@ -30,7 +27,6 @@ class Profile extends React.Component {
             .catch(err => console.error('ERROR: ', err )); 
     }
     render() {
-        console.log(this.props.songs)
         return (
             <StyledProfile>
                 {

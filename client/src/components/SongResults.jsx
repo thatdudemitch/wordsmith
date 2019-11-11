@@ -48,10 +48,8 @@ class SongResults extends React.Component {
             results: []
         }
     }
-    componentDidMount() {
-        const searchQuery = this.props.location.state;
-        console.log(searchQuery);
-        axios.post('/songs', searchQuery)
+    componentDidMount() { 
+        axios.post('/songs', { search: this.props.searchQuery })
             .then(data => this.setState(() => {
                 const searchResults = data.data.response.hits;
                     return {
@@ -64,35 +62,30 @@ class SongResults extends React.Component {
             .catch(err => console.error('Failed', err));
     }
 
-    shouldComponentUpdate(nextProps) {
-        return this.props.location.state.search !== nextProps.location.state.search 
-        || this.props.location.state.search;
-    }
-
-    UNSAFE_componentWillUpdate(nextProps) {
-        const searchQuery = nextProps.location.state;
-        axios.post('/songs', searchQuery)
-            .then(data => this.setState(() => {
-                const searchResults = data.data.response.hits;
-                    return {
-                        results: searchResults.map(result => {
-                            return result;
-                        })
-                    }
-                }
-            ))
-            .catch(err => console.error('Failed', err));
+    componentDidUpdate() {
+        axios.post('/songs', { search: this.props.searchQuery })
+        .then(data => {
+            const searchResults = data.data.response.hits;
+            if(!this.state.results || this.state.results[0].result.id !== searchResults[0].result.id) {
+                this.setState(() => ({
+                    results: searchResults.map(result => {
+                        return result;
+                    })
+                }))
+            }
+        })
+        .catch(err => console.error('Failed', err));
     }
 
     render() {
         return (
             <StyledResults>
-                <Search {...this.props}/>
+                <Search {...this.props} handleSearchSubmit={this.props.handleSearchSubmit} />
                 <div className={`results ${this.state.results.length && 'loaded'}`}>
                     {
                         this.state.results.map((song, idx) => {
                             return (
-                                    <Link className="song" key={idx} to={`/songs/${song.result.id}`}>
+                                    <Link className="song" key={idx} to={`/song/${song.result.id}`}>
                                         <Song 
                                             thumbnail={song.result.song_art_image_url} 
                                             title={song.result.title}
