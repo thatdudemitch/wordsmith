@@ -15,6 +15,11 @@ const StyledResults = styled.div`
         flex-wrap: wrap;
         min-height: 100vh;
         width: 100%;
+        opacity: 0;
+        transition: 200ms opacity ease-in;
+        &.loaded {
+            opacity: 1;
+        }
     }
     .song {
         width: 100%;
@@ -83,7 +88,7 @@ class SongResults extends React.Component {
         return (
             <StyledResults>
                 <Search {...this.props}/>
-                <div className="results">
+                <div className={`results ${this.state.results.length && 'loaded'}`}>
                     {
                         this.state.results.map((song, idx) => {
                             return (

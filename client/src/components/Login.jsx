@@ -32,6 +32,7 @@ const StyledLogin = styled.div`
             box-shadow: 0 3px 15px rgba(200, 200, 200, 0.5);
             width: 100%;
             border: 0;
+            border-radius: 4px;
             padding: 15px;
             color: #FFFFFF;
             font-size: 14px;
@@ -92,13 +93,12 @@ class Login extends React.Component {
         axios.post('/login', credentials)
             .then(user => {
                 if(user) {
-                    this.props.isAuth(true);
-                    this.props.history.push({
+                    return this.props.history.push({
                         pathname: user.data.redirectURI
                     });
                 }
             })
-            .catch(err => console.error(err));
+            .catch(err => console.error('ERROR: ', err ));
 
     }
     render() {
@@ -108,7 +108,7 @@ class Login extends React.Component {
                     <input type="text" name="username" placeholder="Choose username" required onChange={this.handleOnChange}/>
                     <input type="password" name="password" placeholder="Choose password" required onChange={this.handleOnChange}/>
                     <button>Log In</button>
-                    <p class="message">Not registered? <Link to="/register">Create an account</Link></p>
+                    <p className="message">Not registered? <Link to="/register">Create an account</Link></p>
                 </form>
             </StyledLogin>
         )

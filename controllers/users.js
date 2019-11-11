@@ -7,7 +7,7 @@ usersController.index = (req, res) => {
   User.findUserSongs(req.user.id)
   .then(songs => {
       res.json({
-        username: req.user.username,
+        user: { id: req.user.id, username: req.user.username },
         songs: songs,
     });
   })

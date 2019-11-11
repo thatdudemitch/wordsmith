@@ -22,7 +22,7 @@ const StyledSong = styled.div`
 `;
 
 const Song = (props) => (
-   <StyledSong>
+   <StyledSong className="song-content">
         <img className="song-thumbnail" src={props.thumbnail} alt="thumbnail" />
         <strong className="song-title">{props.title}</strong>
         <span className="song-artist">{props.artist}</span>

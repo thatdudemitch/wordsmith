@@ -32,6 +32,7 @@ const StyledRegister = styled.div`
             box-shadow: 0 3px 15px rgba(200, 200, 200, 0.5);
             width: 100%;
             border: 0;
+            border-radius: 4px;
             padding: 15px;
             color: #FFFFFF;
             font-size: 14px;
@@ -93,14 +94,12 @@ class Register extends React.Component {
         axios.post('/register', credentials)
             .then(user => {
                 if(user) {
-                    this.props.isAuth(user.data.loggedIn);
-                    this.props.history.push({
+                    return this.props.history.push({
                         pathname: user.data.redirectURI
                     });
                 }
             })
             .catch(err => console.error(err));
-
     }
     render() {
         return (
@@ -110,7 +109,7 @@ class Register extends React.Component {
                     <input type="email" name="email" placeholder="Enter email" required onChange={this.handleOnChange}/>
                     <input type="password" name="password" placeholder="Choose password" required onChange={this.handleOnChange}/>
                     <button>Register</button>
-                    <p class="message">Already have an account? <Link to="/login">Sign In</Link></p>
+                    <p className="message">Already have an account? <Link to="/login">Sign In</Link></p>
                 </form>
             </StyledRegister>
         )

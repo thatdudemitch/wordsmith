@@ -47,6 +47,7 @@ const StyledNav = styled.nav`
             width: auto;
             top: 0;
             opacity: 1;
+            pointer-events: all;
             .nav-item {
                 &:first-child {
                     margin-right: 20px;

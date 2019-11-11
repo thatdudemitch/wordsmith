@@ -11,10 +11,9 @@ const StyledSearch = styled.form`
         outline: none;
         width: 100%;
         font-size: 1.75rem;
-        /* box-shadow: 0 3px 15px rgba(103, 103, 103, 0.35); */
         padding: 18px;
         height: 50px;
-        background: #f9f9f9;
+        background: #f2f2f2;
         &::placeholder {
             color: #aaa;
         }
@@ -68,7 +67,7 @@ class Search extends React.Component {
         return (
             <StyledSearch onSubmit={this.handleOnSubmit}>
                 <input type="text" name="search" value={this.state.search} placeholder="Search for song" onChange={this.handleOnChange}/>
-                <button>S</button>
+                <button>Search</button>
             </StyledSearch>
         )
     }

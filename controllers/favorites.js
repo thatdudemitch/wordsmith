@@ -3,14 +3,9 @@ const Song = require('../models/song');
 const favoritesController = {};
 
 favoritesController.show = (req, res) => {
-  Song.findById(req.params.id)
-    .then(song => {
-      res.render('user/user-song-single', {
-        currentPage: 'show',
-        message: 'ok',
-        song: song,
-      });
-    }).catch(err => {
+  Song.findById(req.body.id)
+    .then(song => res.json(song))
+    .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
@@ -18,48 +13,22 @@ favoritesController.show = (req, res) => {
 
 favoritesController.create = (req, res) => {
   Song.create({
-    genius_id: req.body.genius,
+    genius_id: req.body.genius_id,
     title: req.body.title,
     artist: req.body.artist,
     album_image: req.body.album,
     user: req.user,
   }, req.user.id).then(() => {
-    res.redirect('/user');
+    res.json('Song saved');
   }).catch(err => {
-    console.log(err);
     res.status(500).json(err);
   });
-};
-
-favoritesController.update = (req, res) => {
-  Song.update({
-    title: req.body.title,
-    artist: req.body.artist,
-  }, req.params.id).then(song => {
-    res.redirect(`/user/${req.params.id}`);
-  }).catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
-};
-
-favoritesController.edit = (req, res) => {
-  Song.findById(req.params.id)
-    .then(song => {
-      res.render('user/user-song-edit', {
-        currentPage: 'edit',
-        song: song,
-      });
-    }).catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
 };
 
 favoritesController.delete = (req, res) => {
   Song.destroy(req.params.id)
     .then(() => {
-      res.redirect('/user');
+      res.json('Song deleted');
     }).catch(err => {
       console.log(err);
       res.status(500).json(err);
