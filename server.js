@@ -3,7 +3,8 @@ const logger = require('morgan');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const passport = require('passport');;
+const passport = require('passport');
+const path = require('path');
 
 require('dotenv').config();
 // express server
@@ -23,6 +24,8 @@ app.listen(port, () => {
     console.log(`Currently listening on port ${port}`);
 });
 // routes
+// app.get('/', 
+
 const songsRouter = require('./routes/songs');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
@@ -31,5 +34,5 @@ app.use('/songs', songsRouter);
 app.use('/profile', usersRouter);
 
 app.get('*', (req, res) => {
-    res.status(404).send('not found!');
+    res.sendFile(path.join(__dirname + '/../client/public/index.html'));
 });
