@@ -37,5 +37,5 @@ app.use('/songs', songsRouter);
 app.use('/profile', usersRouter);
 
 app.get('*', (req, res) => {
-    res.status(404).send('not found!');
+    res.sendFile(path.join(__dirname + '/../client/build/index.html'));
 });
