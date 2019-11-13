@@ -99,7 +99,6 @@ class SongResults extends React.Component {
     }
 
     render() {
-        console.log('component updated')
         return (
             <StyledResults>
                 <Search {...this.props} handleSearchSubmit={this.props.handleSearchSubmit} />

@@ -12,8 +12,16 @@ const StyledProfile = styled.div`
     .song {
         text-decoration: none;
     }
+    .message {
+        font-size: 2.2rem;
+    }
 `;
 class Profile extends React.Component {
+    constructor() {
+        super();
+
+        this.showSavedFavorites = this.showSavedFavorites.bind(this);
+    }
     componentDidMount() {
         axios.get('/profile')
             .then(res => {
@@ -26,20 +34,24 @@ class Profile extends React.Component {
             })
             .catch(err => console.error('ERROR: ', err )); 
     }
+    showSavedFavorites() {
+        if(!this.props.songs.length) {
+            return <p className="message">No favorites saved</p>
+        }
+
+        this.props.songs.map((song, idx) => (
+            <Link key={idx} className="song" to={`/profile/${song.id}`}>
+                <Song
+                    thumbnail={song.album_image} 
+                    title={song.title}
+                    artist={song.artist} />
+            </Link>
+        ))
+    }
     render() {
         return (
             <StyledProfile>
-                {
-                    this.props.songs.length && 
-                        this.props.songs.map((song, idx) => (
-                            <Link key={idx} className="song" to={`/profile/${song.id}`}>
-                                <Song
-                                    thumbnail={song.album_image} 
-                                    title={song.title}
-                                    artist={song.artist} />
-                            </Link>
-                        ))
-                }
+               {this.showSavedFavorites()}
             </StyledProfile>
         )
     }

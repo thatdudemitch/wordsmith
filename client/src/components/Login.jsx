@@ -4,6 +4,16 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const StyledLogin = styled.div`
+    .error {
+        text-align: center;
+        font-size: 1.7rem;
+        color: #721c24;
+        background-color: #f8d7da;
+        border: 2px solid #f5c6cb;
+        border-radius: 6px;
+        padding: 12px 18px;
+        margin-bottom: 0;
+    }
     form {
         position: relative;
         z-index: 1;
@@ -66,8 +76,8 @@ class Login extends React.Component {
 
         this.state = {
             username: '',
-            email: '',
-            password: ''
+            password: '',
+            error: ''
         }
 
         this.handleOnSubmit = this.handleOnSubmit.bind(this);
@@ -93,20 +103,26 @@ class Login extends React.Component {
         axios.post('/login', credentials)
             .then(user => {
                 if(user) {
-                    return this.props.history.push({
+                    this.props.history.push({
                         pathname: user.data.redirectURI
                     });
                 }
             })
-            .catch(err => console.error('ERROR: ', err ));
+            .catch(err => {
+                console.error("Error", err);
+                this.setState(() => ({
+                    error: 'Invalid username or password'
+                }))
+            });
 
     }
     render() {
         return (
             <StyledLogin>
+                {this.state.error && <p className="error">{this.state.error}</p>}
                 <form onSubmit={this.handleOnSubmit}>
-                    <input type="text" name="username" placeholder="Choose username" required onChange={this.handleOnChange}/>
-                    <input type="password" name="password" placeholder="Choose password" required onChange={this.handleOnChange}/>
+                    <input type="text" name="username" placeholder="Enter username" required onChange={this.handleOnChange}/>
+                    <input type="password" name="password" placeholder="Enter password" required onChange={this.handleOnChange}/>
                     <button>Log In</button>
                     <p className="message">Not registered? <Link to="/register">Create an account</Link></p>
                 </form>

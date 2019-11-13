@@ -36,7 +36,6 @@ async function getSingle(req, res, next) {
   fetch(`http://api.genius.com/songs/${id}/?access_token=${process.env.API_KEY}`)
   .then(fetchRes => fetchRes.json())
   .then(jsonRes => {
-    // console.log('JSON RES', jsonRes)
     res.locals.single = jsonRes.response;
     return next();
   }).catch(err => {

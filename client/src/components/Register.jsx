@@ -67,7 +67,7 @@ class Register extends React.Component {
         this.state = {
             username: '',
             email: '',
-            password: ''
+            password: '',
         }
 
         this.handleOnSubmit = this.handleOnSubmit.bind(this);
@@ -94,10 +94,10 @@ class Register extends React.Component {
         axios.post('/register', credentials)
             .then(user => {
                 if(user) {
-                    return this.props.history.push({
+                    this.props.history.push({
                         pathname: user.data.redirectURI
                     });
-                }
+                } 
             })
             .catch(err => console.error(err));
     }
