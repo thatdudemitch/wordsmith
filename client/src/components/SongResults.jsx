@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import Search from './Search';
 import Song from './Song';
+import Loader from './Loader';
 
 const StyledResults = styled.div`
     display: flex;
@@ -12,20 +13,22 @@ const StyledResults = styled.div`
     justify-content: center;
     .results {
         display: flex;
+        justify-content: center;
+        align-items: center;
         flex-wrap: wrap;
         min-height: 100vh;
         width: 100%;
-        opacity: 0;
-        transition: 200ms opacity ease-in;
-        &.loaded {
-            opacity: 1;
-        }
     }
     .song {
         width: 100%;
         text-decoration: none;
         margin-bottom: 22px;
         text-align: center;
+        opacity: 0;
+        transition: 200ms opacity ease-in;
+        &.loaded {
+            opacity: 1;
+        }
     }
 
     @media(min-width:768px) {
@@ -47,6 +50,7 @@ class SongResults extends React.Component {
         this.state = {
             results: []
         }
+        this.loadSongs = this.loadSongs.bind(this);
     }
     componentDidMount() { 
         axios.post('/songs', { search: this.props.searchQuery })
@@ -77,23 +81,30 @@ class SongResults extends React.Component {
         .catch(err => console.error('Failed', err));
     }
 
+    loadSongs() {
+        if (!this.state.results.length) {
+            return <Loader />;
+        }
+
+        return this.state.results.map((song, idx) => {
+            return (
+                <Link className={`song ${this.state.results.length && 'loaded'}`} key={idx} to={`/song/${song.result.id}`}>
+                    <Song 
+                        thumbnail={song.result.song_art_image_url} 
+                        title={song.result.title}
+                        artist={song.result.primary_artist.name} />
+                </Link>
+            );
+        });
+    }
+
     render() {
+        console.log('component updated')
         return (
             <StyledResults>
                 <Search {...this.props} handleSearchSubmit={this.props.handleSearchSubmit} />
-                <div className={`results ${this.state.results.length && 'loaded'}`}>
-                    {
-                        this.state.results.map((song, idx) => {
-                            return (
-                                    <Link className="song" key={idx} to={`/song/${song.result.id}`}>
-                                        <Song 
-                                            thumbnail={song.result.song_art_image_url} 
-                                            title={song.result.title}
-                                            artist={song.result.primary_artist.name} />
-                                    </Link>
-                            );
-                        })
-                    }
+                <div className={`results`}>
+                    {this.loadSongs()}
                 </div>
             </StyledResults>
         );

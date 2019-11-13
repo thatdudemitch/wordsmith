@@ -2,14 +2,20 @@ import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import Song from './Song';
+import Loader from './Loader';
 
 const StyledLyrics = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     width: 100%;
     padding-bottom: 22px;
-    opacity: 0;
-    transition: 200ms opacity ease-in;
-    &.loaded {
-        opacity: 1;
+    > div {
+        opacity: 0;
+        transition: 200ms opacity ease-in;
+        &.loaded {
+            opacity: 1;
+        }
     }
     .bar {
         font-size: 1.6rem;
@@ -65,8 +71,7 @@ const StyledLyrics = styled.div`
             flex-shrink: 0;
         }
         button {
-            width: 50%;
-            margin-top: 22px;
+            margin-top: 44px;
             order: 2;
         }
         .song-content {
@@ -90,6 +95,7 @@ class Lyrics extends React.Component {
 
         this.state = { song: null }
         this.favoriteSong = this.favoriteSong.bind(this);
+        this.loadSong = this.loadSong.bind(this);
     }
     componentDidMount() {
         const id = this.props.match.params.id;
@@ -121,27 +127,33 @@ class Lyrics extends React.Component {
         })
         .catch(err => console.error('ERROR: ', err ));
     }
-    render() {
-        console.log('SONG', this.state.song, this.props.getUser)
+
+    loadSong() {
+        if (!this.state.song) {
+            return <Loader />;
+        }
+
         return (
-            <StyledLyrics className={this.state.song && 'loaded'}>
-                {
-                    this.state.song && 
+            <div className={this.state.song && 'loaded'}>
+                <button onClick={this.favoriteSong}>Favorite Song</button>
+                <div className="lyrics">
+                    <Song
+                        thumbnail={this.state.song.data.song_art_image_url} 
+                        title={this.state.song.data.title}
+                        artist={this.state.song.data.primary_artist.name} />
                     <div>
-                        <button onClick={this.favoriteSong}>Favorite Song</button>
-                        <div className="lyrics">
-                            <Song
-                                thumbnail={this.state.song.data.song_art_image_url} 
-                                title={this.state.song.data.title}
-                                artist={this.state.song.data.primary_artist.name} />
-                            <div>
-                                {this.state.song.data.lyrics.split(/\r?\n/).map((verse, idx) => {
-                                    return (verse !== "") ? <p className="bar" key={idx}>{verse}</p> : <br />
-                                })}
-                            </div>
-                        </div>
+                        {this.state.song.data.lyrics.split(/\r?\n/).map((verse, idx) => {
+                            return (verse !== "") ? <p className="bar" key={idx}>{verse}</p> : <br />
+                        })}
                     </div>
-                }
+                </div>
+            </div>
+        ) 
+    }
+    render() {
+        return (
+            <StyledLyrics>
+                {this.loadSong()}
             </StyledLyrics>
         )
     }
