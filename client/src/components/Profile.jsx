@@ -39,7 +39,7 @@ class Profile extends React.Component {
             return <p className="message">No favorites saved</p>
         }
 
-        this.props.songs.map((song, idx) => (
+        return this.props.songs.map((song, idx) => (
             <Link key={idx} className="song" to={`/profile/${song.id}`}>
                 <Song
                     thumbnail={song.album_image} 
