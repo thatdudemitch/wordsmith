@@ -23,6 +23,7 @@ class Profile extends React.Component {
         this.showSavedFavorites = this.showSavedFavorites.bind(this);
     }
     componentDidMount() {
+        console.log(user);
         axios.get('/profile')
             .then(res => {
                 console.log(res);
