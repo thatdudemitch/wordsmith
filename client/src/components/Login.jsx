@@ -101,12 +101,10 @@ class Login extends React.Component {
         }
 
         axios.post('/login', credentials)
-            .then(user => {
-                if(user) {
-                    this.props.history.push({
-                        pathname: user.data.redirectURI
-                    });
-                }
+            .then(() => {
+                this.props.history.push({
+                    pathname: '/profile'
+                });
             })
             .catch(err => {
                 console.error("Error", err);

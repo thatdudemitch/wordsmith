@@ -92,12 +92,10 @@ class Register extends React.Component {
         }
 
         axios.post('/register', credentials)
-            .then(user => {
-                if(user) {
-                    this.props.history.push({
-                        pathname: "/profile"
-                    });
-                } 
+            .then(() => {
+                this.props.history.push({
+                    pathname: "/login"
+                });
             })
             .catch(err => console.error(err));
     }

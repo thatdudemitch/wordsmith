@@ -25,6 +25,7 @@ class Profile extends React.Component {
     componentDidMount() {
         axios.get('/profile')
             .then(res => {
+                console.log(res);
                 if(!res.data.user) {
                     this.props.history.push({
                         pathname: "/login"
