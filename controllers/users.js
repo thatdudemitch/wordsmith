@@ -26,7 +26,7 @@ usersController.create = (req, res) => {
   .then(user => {
     req.login(user, err => {
       if (err) return;
-      return res.json({ 
+      res.json({ 
         redirectURI: '/profile',
         loggedIn: true 
       });

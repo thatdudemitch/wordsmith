@@ -95,7 +95,7 @@ class Register extends React.Component {
             .then(user => {
                 if(user) {
                     this.props.history.push({
-                        pathname: user.data.redirectURI
+                        pathname: "/profile"
                     });
                 } 
             })
