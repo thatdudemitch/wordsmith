@@ -17,13 +17,13 @@ const StyledProfile = styled.div`
     }
 `;
 class Profile extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.showSavedFavorites = this.showSavedFavorites.bind(this);
     }
     componentDidMount() {
-        console.log(user);
+        console.log(this.props);
         axios.get('/profile')
             .then(res => {
                 console.log(res);
