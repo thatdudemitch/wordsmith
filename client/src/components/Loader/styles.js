@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const StyledLoader = styled.span`
+export const StyledLoader = styled.span`
     display: inline-block;
     width: 75px;
     height: 75px;
@@ -62,11 +61,3 @@ const StyledLoader = styled.span`
         }
     }
 `;
-
-const Loader = () => (
-    <StyledLoader>
-        <span className="loader"></span>
-    </StyledLoader>
-)
-
-export default Loader;

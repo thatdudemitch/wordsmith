@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const StyledMenu = styled.div`
+export const StyledMenu = styled.div`
     .menu {
         position: absolute;
         top: 25px;
@@ -73,15 +72,3 @@ const StyledMenu = styled.div`
         }
     }
 `
-
-const Menu = (props) => (
-    <StyledMenu>
-        <div className="menu" onClick={props.toggleMenu}>
-            <div id="menu-button" className={`hamburger ${props.isOpen ? 'open' : 'close'}`}>
-                <div className="hamburger-inner"></div>
-            </div>  
-        </div>
-    </StyledMenu>
-)
-
-export default Menu;

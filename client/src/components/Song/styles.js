@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const StyledSong = styled.div`
+export const StyledSong = styled.div`
     .song-thumbnail {
         width: 300px;
         height: 300px;
@@ -21,13 +20,3 @@ const StyledSong = styled.div`
         color: #1a1a1a;
     }
 `;
-
-const Song = (props) => (
-   <StyledSong className="song-content">
-        <img className="song-thumbnail" src={props.thumbnail} alt="thumbnail" />
-        <strong className="song-title">{props.title}</strong>
-        <span className="song-artist">{props.artist}</span>
-   </StyledSong>
-);
-
-export default Song;

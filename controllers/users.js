@@ -7,8 +7,8 @@ usersController.index = (req, res) => {
   User.findUserSongs(req.user.id)
   .then(songs => {
       res.json({
-        user: { id: req.user.id, username: req.user.username },
-        songs: songs,
+        user: req.user,
+        songs
     });
   })
   .catch(err => res.status(400).json("Error", err));
@@ -27,8 +27,7 @@ usersController.create = (req, res) => {
     req.login(user, err => {
       if (err) return;
       res.json({ 
-        redirectURI: '/profile',
-        loggedIn: true 
+        user
       });
     });
   })

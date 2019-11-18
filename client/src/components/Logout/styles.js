@@ -1,7 +1,6 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 
-const StyledLogout = styled.div`
+export const StyledLogout = styled.div`
     position: relative;
     z-index: 1;
     background: #FFFFFF;
@@ -31,7 +30,7 @@ const StyledLogout = styled.div`
     }
 `;
 
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
     text-transform: uppercase;
     outline: 0;
     background: #949eff;
@@ -62,19 +61,3 @@ const StyledButton = styled.button`
         }
     `}
 `;
-
-const Logout = (props) => (
-    <StyledLogout>
-        <p className="message">Are you sure you want to log out?</p>
-        <div className="ctas">
-            <StyledButton onClick={() => {
-                props.handleLogout(false, props)
-            }}>Cancel</StyledButton>
-            <StyledButton warn onClick={() =>{
-                props.handleLogout(true, props)
-            }}>Log Out</StyledButton>
-        </div>
-    </StyledLogout>
-);
-
-export default Logout;

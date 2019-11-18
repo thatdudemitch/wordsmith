@@ -30,6 +30,7 @@
     "normalize.css": "^8.0.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "pg-promise": "^6.3.5"
+    "pg-promise": "^6.3.5",
+    "react-spring": "^8.0.27"
   }
 }
