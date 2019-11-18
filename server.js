@@ -34,6 +34,6 @@ app.listen(port, () => {
 const songsRouter = require('./routes/songs');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
-app.use('/', authRouter);
+app.use('/auth', authRouter);
 app.use('/songs', songsRouter);
 app.use('/profile', usersRouter);

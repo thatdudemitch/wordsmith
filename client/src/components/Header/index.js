@@ -21,10 +21,10 @@ const HeaderContainer = () => {
                 transitions.map(({ item, key, props }) => item && 
                     <animated.ul key={key} className="nav" style={props}>
                         <li className="nav-item">
-                            <StyledLink to="/login">Sign In</StyledLink>
+                            <StyledLink to="/auth/login">Sign In</StyledLink>
                         </li>
                         <li className="nav-item">
-                            <StyledLink to="/register" cta={true ? 1 : 0}>Create an account</StyledLink>
+                            <StyledLink to="/auth/register" cta={true ? 1 : 0}>Create an account</StyledLink>
                         </li>
                     </animated.ul>
             )) : (
@@ -34,7 +34,7 @@ const HeaderContainer = () => {
                             <StyledLink to="/profile">Profile</StyledLink>
                         </li>
                         <li className="nav-item">
-                            <StyledLink to="/logout">Logout</StyledLink>
+                            <StyledLink to="/auth/logout">Logout</StyledLink>
                         </li>
                     </animated.ul>
             ))
@@ -42,10 +42,10 @@ const HeaderContainer = () => {
         return !auth.user ? (  
             <ul className="nav">
                 <li className="nav-item">
-                    <StyledLink to="/login">Sign In</StyledLink>
+                    <StyledLink to="/auth/login">Sign In</StyledLink>
                 </li>
                 <li className="nav-item">
-                    <StyledLink to="/register" cta={true ? 1 : 0}>Create an account</StyledLink>
+                    <StyledLink to="/auth/register" cta={true ? 1 : 0}>Create an account</StyledLink>
                 </li>
             </ul>
         ) : (
@@ -54,7 +54,7 @@ const HeaderContainer = () => {
                     <StyledLink to="/profile">Profile</StyledLink>
                 </li>
                 <li className="nav-item">
-                    <StyledLink to="/logout">Logout</StyledLink>
+                    <StyledLink to="/auth/logout">Logout</StyledLink>
                 </li>
             </ul>
         )

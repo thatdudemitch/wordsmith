@@ -21,7 +21,7 @@ function useProvideAuth() {
             password
         }
 
-        return axios.post('/login', credentials)
+        return axios.post('/auth/login', credentials)
             .then(() => axios.get('/profile'))
             .then(user => {
                 setUser(user.data);
@@ -37,7 +37,7 @@ function useProvideAuth() {
             password
         }
 
-        return axios.post('/register', credentials)
+        return axios.post('/auth/register', credentials)
         .then(() => axios.get('/profile'))
         .then(user => {
             setUser(user.data);
@@ -48,7 +48,7 @@ function useProvideAuth() {
 
     const signout = (choice) => {
         if(choice) {
-            return axios.get('/logout')
+            return axios.get('/auth/logout')
                 .then(() => {
                     setUser(null);
                     return true;

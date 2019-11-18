@@ -14,9 +14,9 @@ const App = () => {
                     <Route exact path="/song/:id" component={Lyrics} />
                     <Route exact path="/profile" component={Profile} />
                     <Route exact path="/profile/:id" component={ProfileSong} />
-                    <Route exact path="/register" component={Register} />
-                    <Route exact path="/login" component={Login} />
-                    <Route exact path="/logout" component={Logout} />
+                    <Route exact path="/auth/register" component={Register} />
+                    <Route exact path="/auth/login" component={Login} />
+                    <Route exact path="/auth/logout" component={Logout} />
                 </Router>
             </div>
         </ProvideAuth>

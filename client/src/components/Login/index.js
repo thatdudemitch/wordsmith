@@ -25,7 +25,7 @@ const Login = () => {
             });
         } catch(err) {
             router.history.push({
-                pathname: '/login'
+                pathname: '/auth/login'
             });
             console.log(err);
             return null;

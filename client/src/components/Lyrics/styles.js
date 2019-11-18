@@ -4,6 +4,7 @@ export const StyledLyrics = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     > div {
         display: flex;
         justify-content: center;
@@ -16,7 +17,7 @@ export const StyledLyrics = styled.div`
         font-size: 1.6rem;
         line-height: 1.5;
         margin: 20px 0;
-}
+        padding: 0 15px;
     }
     .song-content {
         background: #E8E8E5;
@@ -87,9 +88,9 @@ export const StyledLyrics = styled.div`
             justify-content: center;
             height: 525px;
             order: 1;
-            > div {
-                overflow-y: scroll;
-            }
+        }
+        .verse {
+            overflow-y: scroll;
         }
     }
 `;

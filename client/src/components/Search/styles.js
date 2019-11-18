@@ -4,7 +4,7 @@ export const StyledSearch = styled.form`
     position: relative;
     width: 100%;
     max-width: 260px;
-    margin: 22px auto;
+    margin: 44px auto;
     input[type="text"] {
         border-radius: 6px;
         border: none;

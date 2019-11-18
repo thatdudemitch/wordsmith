@@ -44,7 +44,7 @@ const Lyrics = () => {
         
         if(!auth.user) {
             router.history.push({
-                pathname: "/login",
+                pathname: "/auth/login",
                 state: { prevPath: `/song/${router.match.params.id}` }
             });
             return;
@@ -71,7 +71,7 @@ const Lyrics = () => {
                         thumbnail={song.data.song_art_image_thumbnail_url} 
                         title={song.data.title} 
                         artist={song.data.primary_artist.name} />
-                    <div>
+                    <div className="verse">
                         {song.data.lyrics.split(/\r?\n/).map((verse, idx) => {
                             return (verse !== "") ? <p className="bar" key={idx}>{verse}</p> : <br key={idx}/>
                         })}

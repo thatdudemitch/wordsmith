@@ -20,7 +20,7 @@ const Register = () => {
             });
         } catch(err) {
             router.history.push({
-                pathname: '/register'
+                pathname: '/auth/register'
             });
             return null;
         }

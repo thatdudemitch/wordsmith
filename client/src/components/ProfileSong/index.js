@@ -14,7 +14,7 @@ const ProfileSong = () => {
     useEffect(() => {      
         if (!auth.user) {
             router.history.push({
-                pathname: '/login'
+                pathname: '/auth/login'
             });
         }  
 

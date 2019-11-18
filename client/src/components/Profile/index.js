@@ -21,7 +21,7 @@ const Profile = () => {
     function showSavedFavorites() {
         if (!auth.user) {
             router.history.push({
-                pathname: '/login'
+                pathname: '/auth/login'
             });
             return null;
         }
