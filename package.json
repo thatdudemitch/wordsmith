@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "npm start --prefix client",
     "dev": "nodemon server.js",
-    "start": "node server.js",
+    "start": "node server.js && npm client",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "debugger": "DEBUG=*:* npm run dev"
   },
