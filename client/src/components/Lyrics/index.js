@@ -13,10 +13,7 @@ const Lyrics = () => {
     const auth = useAuth();
     const animate = useSpring({ opacity: 1, from : { opacity: 0 } });
 
-    console.log(auth.user);
-
     useEffect(() => {      
-        console.log('in use effect')  
         const id = router.match.params.id;
         axios.post(`/songs/${id}`, { id })
             .then(song => {
