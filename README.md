@@ -1,14 +1,30 @@
 # Wordsmith
-[Wordsmith Repo](https://github.com/thatdudemitch/wordsmith)
-[Wordsmith Heroku](https://evening-coast-89238.herokuapp.com)
+[Live Site: Wordsmith](https://wordsmith-lyrics.herokuapp.com/)
 
-## Wireframes and Mockup
-#### Song page
-![Image](https://github.com/thatdudemitch/wordsmith/blob/master/README_images/wireframe1.JPG)
-#### Results page
-![Image](https://github.com/thatdudemitch/wordsmith/blob/master/README_images/wireframe2.JPG)
-#### Results page mockup
-![Image](https://github.com/thatdudemitch/wordsmith/blob/master/README_images/song-results-page.png)
+## UPDATE!
+
+> Complete refactor and redesign of wordsmith, now using React (and Hooks!!) with a Node/Express/PostgreSQL backend.
+
+## Mobile and Desktop
+#### Mobile Home page
+![Image](https://github.com/thatdudemitch/wordsmith/blob/master/README_images/SearchMob.png)
+#### Mobile Song Results page
+![Image](https://github.com/thatdudemitch/wordsmith/blob/master/README_images/SongResultsMob.png)
+#### Mobile Single Song page
+![Image](https://github.com/thatdudemitch/wordsmith/blob/master/README_images/SingleSongMob.png)
+
+#### Desktop Home page
+![Image](https://github.com/thatdudemitch/wordsmith/blob/master/README_images/SearchDesk.png)
+#### Desktop Song Results page
+![Image](https://github.com/thatdudemitch/wordsmith/blob/master/README_images/SongResultsDesk.png)
+#### Desktop Single Song page
+![Image](https://github.com/thatdudemitch/wordsmith/blob/master/README_images/SingleSongDesk.png)
+
+## Opportunities for Future Growth
+
+- [] User sign in and sign up aren't working properly on production. Currently working locally. Will continue to test and ebug what may be causing the issue
+
+---
 
 ## What is Wordsmith?
 
